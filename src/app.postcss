@@ -1,3 +1,25 @@
 @tailwind base;
+
+@layer base {
+	h1 {
+		@apply text-2xl font-bold;
+	}
+	h2 {
+		@apply text-xl font-semibold;
+	}
+	h3 {
+		@apply text-lg;
+	}
+	a {
+		@apply text-indigo-600 hover:text-indigo-700 underline;
+	}
+	button {
+		@apply inline-flex py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500;
+	}
+	textarea {
+		@apply p-2.5 shadow-sm border-2 rounded-lg leading-relaxed;
+	}
+}
+
 @tailwind components;
 @tailwind utilities;
