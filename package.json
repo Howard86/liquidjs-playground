@@ -1,5 +1,6 @@
 {
-	"name": "~TODO~",
+	"name": "liquidjs-playground",
+	"description": "This is an alternative Liquidjs playground with custom filters to test Liquidjs syntax",
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "svelte-kit dev",
