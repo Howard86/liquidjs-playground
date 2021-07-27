@@ -1,4 +1,7 @@
 import preprocess from 'svelte-preprocess';
+import adapterStatic from '@sveltejs/adapter-static';
+import tailwindcss from 'tailwindcss';
+import autoprefixer from 'autoprefixer';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -6,13 +9,18 @@ const config = {
 	// for more information about preprocessors
 	preprocess: [
 		preprocess({
-			postcss: true
+			postcss: {
+				plugins: [tailwindcss, autoprefixer]
+			}
 		})
 	],
 
 	kit: {
 		// hydrate the <div id="svelte"> element in src/app.html
-		target: '#svelte'
+		target: '#svelte',
+		adapter: {
+			adapt: adapterStatic
+		}
 	}
 };
 
