@@ -1,32 +1,34 @@
 <script>
+	import ContextInput from '$lib/components/ContextInput.svelte';
 	import { initEngine } from '$lib/liquidjs';
+	import { context } from '$lib/store';
+	import { getInput, updateInput } from '$lib/parsed-input';
 	import { classnames } from 'tailwindcss-classnames';
 
 	let engine = initEngine();
 
-	let input = 'Your name is {{ name | capitalize }}!';
-	let context = {
-		name: 'test name'
-	};
-	let output = '';
-	let isError = false;
+	let input = getInput();
+	let inputError = false;
 
-	const handleOnClick = async () => {
+	let output = '';
+
+	const onUpdateInput = async () => {
 		try {
 			if (engine === null) {
-				engine = initEngine();
-
-				if (engine === null) {
+				const newEngine = initEngine();
+				if (newEngine === null) {
 					throw new Error('Failed to find Liquidjs, please check your internet connection');
 				}
+				engine = newEngine;
 			}
 
-			output = await engine.parseAndRender(input, context);
-			isError = false;
+			output = await engine.parseAndRender(input, $context);
+			updateInput(input);
+			inputError = false;
 		} catch (error) {
 			console.error(error);
 			output = error;
-			isError = true;
+			inputError = true;
 		}
 	};
 
@@ -43,10 +45,11 @@
 		<div class="flex my-4">
 			<textarea class={inputStyle} rows="6" bind:value={input} />
 			<div class="px-4 self-center">
-				<button on:click={handleOnClick}>Convert</button>
+				<button on:click={onUpdateInput}>Convert</button>
 			</div>
-			<textarea class={outputStyle(isError)} bind:value={output} disabled />
+			<textarea class={outputStyle(inputError)} bind:value={output} disabled />
 		</div>
+		<ContextInput />
 	</main>
 	<footer>
 		<p>
