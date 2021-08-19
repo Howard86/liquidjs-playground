@@ -1,11 +1,22 @@
 import type { Liquid } from 'liquidjs';
 
+let engine: Liquid = null;
+
 export function initEngine(): Liquid {
+	if (engine !== null) {
+		return engine;
+	}
+
 	if (typeof window === 'undefined') {
 		return null;
 	}
 
-	const BrowserLiquid = window.liquidjs.Liquid;
+	engine = new window.liquidjs.Liquid({ cache: true, strictFilters: true, strictVariables: true });
+	engine.registerFilter('decimal', decimal);
 
-	return new BrowserLiquid({ cache: true, strictFilters: true, strictVariables: true });
+	return engine;
+}
+
+function decimal(value: string): string {
+	return window.numeral(value).format('0,0');
 }
