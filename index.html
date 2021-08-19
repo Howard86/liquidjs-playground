@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<title>Liquidjs Playground</title>
 		<meta charset="utf-8" />
 		<link rel="icon" href="/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,15 +9,15 @@
 
 		
 
-		<link rel="modulepreload" href="/liquidjs-playground/_app/start-0f8030eb.js">
-		<link rel="modulepreload" href="/liquidjs-playground/_app/chunks/vendor-b5f683b7.js">
-		<link rel="stylesheet" href="/liquidjs-playground/_app/assets/start-cf2dbcf6.css">
+		<link rel="modulepreload" href="/./_app/start-97697896.js">
+		<link rel="modulepreload" href="/./_app/chunks/vendor-122da2d3.js">
+		<link rel="stylesheet" href="/./_app/assets/start-cf2dbcf6.css">
 
 		<script type="module">
-			import { start } from "/liquidjs-playground/_app/start-0f8030eb.js";
+			import { start } from "/./_app/start-97697896.js";
 			start({
 				target: document.querySelector("#svelte"),
-				paths: {"base":"/liquidjs-playground","assets":"/liquidjs-playground"},
+				paths: {"base":"","assets":"/."},
 				session: {},
 				host: location.host,
 				route: true,
@@ -25,7 +26,7 @@
 				hydrate: null
 			});
 		</script>
-		<script defer src="https://cdn.jsdelivr.net/npm/liquidjs/dist/liquid.browser.umd.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/liquidjs/dist/liquid.browser.umd.js"></script>
 	</head>
 	<body>
 		<div id="svelte">
