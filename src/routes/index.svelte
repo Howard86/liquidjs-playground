@@ -51,13 +51,27 @@
 			/>
 		</div>
 		<ContextInput />
-		<ul>
-			<HintTag displayText="decimal" hoverText={'{{123456 | decimal }} => 123,456'} />
-		</ul>
+		<div class="p-4 bg-green-50 flex-none my-12 rounded-lg">
+			<h2>Help?</h2>
+			<p>
+				Here is a list of custom <a
+					href="https://liquidjs.com/filters/overview.html"
+					target="_blank"
+					rel="noreferrer noopener">filter</a
+				> you can apply, hover for more details
+			</p>
+			<ul class="bg-green-200 p-4 mt-4">
+				<HintTag displayText="decimal" hoverText={'{{123456 | decimal }} => 123,456'} />
+			</ul>
+		</div>
 	</main>
 	<footer>
 		<p>
-			Visit <a href="https://liquidjs.com/filters/overview.html">Liquidjs.com</a> to read more options
+			Visit <a
+				href="https://liquidjs.com/filters/overview.html"
+				target="_blank"
+				rel="noreferrer noopener">Liquidjs.com</a
+			> to read more options
 		</p>
 	</footer>
 </div>
