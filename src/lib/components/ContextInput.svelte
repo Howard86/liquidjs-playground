@@ -1,5 +1,6 @@
 <script>
 	import { context } from '$lib/store';
+	import LabelledTextarea from './LabelledTextarea.svelte';
 
 	const DEFAULT_MESSAGE = 'Please enter a valid JSON';
 	let displayText = JSON.stringify($context, null, 2);
@@ -19,12 +20,9 @@
 	};
 </script>
 
-<div class="inline-flex flex-col items-center">
-	<h2>Context</h2>
-	<textarea
-		class="text-base text-gray-700 border rounded-lg focus:shadow-md"
-		bind:value={displayText}
-	/>
+<div class="flex flex-col items-center">
+	<h2 class="pb-4">Custom variables in JSON</h2>
+	<LabelledTextarea id="context" placeholder="Variables" bind:value={displayText} />
 	{#if isError}
 		<span class="text-red-500">{message}</span>
 	{:else if message === DEFAULT_MESSAGE}
